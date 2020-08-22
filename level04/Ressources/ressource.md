@@ -1,6 +1,6 @@
 Return2libc Attack
 
-```
+```bash
 (gdb) b main
 Breakpoint 1 at 0x80486cd
 ```
